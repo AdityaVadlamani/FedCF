@@ -1,0 +1,34 @@
+seed: 0
+
+base_model_config:
+  lr: 3e-5
+
+logging_config:
+  use_wandb: False
+  wandb_config:
+    log_model: False
+    group: "base"
+    job_type: "debug"
+
+epochs: 5
+batch_size: 256
+num_workers: 1
+dataset:
+  name: cail
+  type: tabular
+  force_reprep: False
+
+resource_config:
+  cpus: 20
+  nodes: 1
+  gpus: 1
+dataset_split_fractions:
+  train: 0.3
+  valid: 0.2
+  calib: 0.25
+output_dir: "./outputs"
+job_id: "base_CAIL_minilm"
+resume_from_checkpoint: False
+num_server_rounds: 20
+num_clients: 10
+fraction_fit: 0.5
